@@ -1,0 +1,35 @@
+# Magento Default Ignore Files
+app/etc/local.xml
+
+errors/local.xml
+includes/src/*
+media/*
+var/*
+
+downloader/.cache/*
+downloader/connect.cfg
+downloader/cache.cfg
+
+!media/.htaccess
+!var/.htaccess
+!var/package
+
+# Do not Ignore empty files
+!empty
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+._*
+
+# Ignoring the files created by Eclipse and Aptana
+.buildpath
+.project
+.tmp_*~
+.settings/
+nbproject/*
+.idea/*
+media/
+
