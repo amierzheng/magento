@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Phoenix
+ * @package     Phoenix_Moneybookers
+ * @copyright   Copyright (c) 2014 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Fontera_Amier>
+            <version>1.0.0.0</version>
+        </Fontera_Amier>
+    </modules>
+    <global>
+        <models>
+            <fontera_amier>
+                <class>Fontera_Amier_Model</class>
+                <resourceModel>amier_resource</resourceModel>
+            </fontera_amier>
+            <amier_resource>
+                <class>Fontera_Amier_Model_Resource</class>
+                <entities>
+                    <scraper>
+                        <table>scraper</table>
+                    </scraper>
+                    <scraper_data>
+                        <table>scraper_data</table>
+                    </scraper_data>
+                    <scraper_data_details>
+                        <table>scraper_data_details</table>
+                    </scraper_data_details>
+                </entities>
+            </amier_resource>
+        </models>
+        <resources>
+            <amier_setup>
+                <setup>
+                    <module>Fontera_Amier</module>
+                    <class>Fontera_Amier_Model_Resource_Setup</class>
+                </setup>
+            </amier_setup>
+        </resources>
+        <helpers>
+            <fontera_amier>
+                <class>Fontera_Amier_Helper</class>
+            </fontera_amier>
+        </helpers>
+        <blocks>
+            <fontera_amier>
+                <class>Fontera_Amier_Block</class>
+            </fontera_amier>
+        </blocks>
+    </global>
+    <admin>
+         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Fontera_Amier after="Mage_Adminhtml">Fontera_Amier_Adminhtml</Fontera_Amier>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <fontera_amier>
+                    <file>scraper.xml</file>
+                </fontera_amier>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
