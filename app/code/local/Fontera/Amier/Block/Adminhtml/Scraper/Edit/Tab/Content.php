@@ -37,7 +37,7 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit_Tab_Content extends Mage_Adminh
     public function __construct()
     {
         parent::__construct();
-        $this->setTemplate('catalog/product/edit/options.phtml');
+        //$this->setTemplate('catalog/product/edit/options.phtml');
     }
 
 

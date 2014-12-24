@@ -52,7 +52,20 @@
                     <module>Fontera_Amier</module>
                     <class>Fontera_Amier_Model_Resource_Setup</class>
                 </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
             </amier_setup>
+            <amier_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </amier_write>
+            <amier_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </amier_read>
         </resources>
         <helpers>
             <fontera_amier>

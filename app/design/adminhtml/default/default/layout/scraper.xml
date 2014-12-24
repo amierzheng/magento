@@ -30,7 +30,9 @@
 
     <adminhtml_scraper_index>
         <reference name="content">
-            <block type="fontera_amier/adminhtml_scraper" name="scrapers" />
+            <block type="fontera_amier/adminhtml_scraper" name="scrapers">
+                <block type="fontera_amier/adminhtml_scraper_grid" name="scrapers_grid" />
+            </block>
         </reference>
     </adminhtml_scraper_index>
 

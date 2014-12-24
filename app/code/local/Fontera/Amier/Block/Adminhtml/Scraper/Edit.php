@@ -36,8 +36,8 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit extends Mage_Adminhtml_Block_Wi
     public function __construct()
     {
         parent::__construct();
-        $this->setTemplate('catalog/product/edit.phtml');
-        $this->setId('product_edit');
+        //$this->setTemplate('catalog/product/edit.phtml');
+        $this->setId('scraper_edit');
     }
 
     /**
@@ -135,11 +135,6 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit extends Mage_Adminhtml_Block_Wi
         return $this->getChildHtml('back_button');
     }
 
-    public function getCancelButtonHtml()
-    {
-        return $this->getChildHtml('reset_button');
-    }
-
     public function getSaveButtonHtml()
     {
         return $this->getChildHtml('save_button');
@@ -153,16 +148,6 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit extends Mage_Adminhtml_Block_Wi
     public function getDeleteButtonHtml()
     {
         return $this->getChildHtml('delete_button');
-    }
-
-    public function getDuplicateButtonHtml()
-    {
-        return $this->getChildHtml('duplicate_button');
-    }
-
-    public function getValidationUrl()
-    {
-        return $this->getUrl('*/*/validate', array('_current'=>true));
     }
 
     public function getSaveUrl()
@@ -180,35 +165,6 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit extends Mage_Adminhtml_Block_Wi
         ));
     }
 
-    public function getProductId()
-    {
-        return $this->getProduct()->getId();
-    }
-
-    public function getProductSetId()
-    {
-        $setId = false;
-        if (!($setId = $this->getProduct()->getAttributeSetId()) && $this->getRequest()) {
-            $setId = $this->getRequest()->getParam('set', null);
-        }
-        return $setId;
-    }
-
-    public function getIsGrouped()
-    {
-        return $this->getProduct()->isGrouped();
-    }
-
-    public function getDeleteUrl()
-    {
-        return $this->getUrl('*/*/delete', array('_current'=>true));
-    }
-
-    public function getDuplicateUrl()
-    {
-        return $this->getUrl('*/*/duplicate', array('_current'=>true));
-    }
-
     public function getHeader()
     {
         $header = '';
@@ -224,31 +180,5 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit extends Mage_Adminhtml_Block_Wi
         return $header;
     }
 
-    public function getAttributeSetName()
-    {
-        if ($setId = $this->getProduct()->getAttributeSetId()) {
-            $set = Mage::getModel('eav/entity_attribute_set')
-                ->load($setId);
-            return $set->getAttributeSetName();
-        }
-        return '';
-    }
 
-    public function getIsConfigured()
-    {
-        if ($this->getProduct()->isConfigurable()
-            && !($superAttributes = $this->getProduct()
-                ->getTypeInstance(true)
-                ->getUsedProductAttributeIds($this->getProduct()))
-        ) {
-            $superAttributes = false;
-        }
-
-        return !$this->getProduct()->isConfigurable() || $superAttributes !== false;
-    }
-
-    public function getSelectedTabId()
-    {
-        return addslashes(htmlspecialchars($this->getRequest()->getParam('tab')));
-    }
 }

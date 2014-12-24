@@ -35,29 +35,28 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Edit_Tab_Images extends Mage_Adminht
 {
     protected function _prepareForm()
     {
-        $product = Mage::registry('product');
 
         $form = new Varien_Data_Form();
-        $fieldset = $form->addFieldset('tiered_price', array('legend'=>Mage::helper('catalog')->__('Tier Pricing')));
+        $this->setForm($form);
+
+        $fieldset = $form->addFieldset('general', array('legend'=>Mage::helper('fontera_amier')->__('General')));
 
         $fieldset->addField('default_price', 'label', array(
-                'label'=> Mage::helper('catalog')->__('Default Price'),
-                'title'=> Mage::helper('catalog')->__('Default Price'),
+                'label'=> Mage::helper('fontera_amier')->__('Default Price'),
+                'title'=> Mage::helper('fontera_amier')->__('Default Price'),
                 'name'=>'default_price',
                 'bold'=>true,
-                'value'=>$product->getPrice()
+
         ));
 
         $fieldset->addField('tier_price', 'text', array(
                 'name'=>'tier_price',
                 'class'=>'requried-entry',
-                'value'=>$product->getData('tier_price')
+                'value'=>''
         ));
 
-        $form->getElement('tier_price')->setRenderer(
-            $this->getLayout()->createBlock('adminhtml/catalog_product_edit_tab_price_tier')
-        );
 
-        $this->setForm($form);
+
+        return parent::_prepareForm();
     }
-}// Class Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Price END
+}

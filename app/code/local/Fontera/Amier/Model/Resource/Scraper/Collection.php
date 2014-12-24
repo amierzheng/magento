@@ -10,7 +10,7 @@ class Fontera_Amier_Model_Resource_Scraper_Collection extends Mage_Eav_Model_Ent
      */
     protected function _construct()
     {
-        $this->_init('scraper');
+        $this->_init('amier/scraper');
 
     }
 

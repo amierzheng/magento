@@ -34,13 +34,13 @@
 class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_Container
 {
 
+// http://www.magentogarden.com/blog/how-does-magento-adminhtml-grid-work.html
+
     /**
      * Set template
      */
     public function __construct()
     {
-        Mage::log('Fontera_Amier_Block_Adminhtml_Scraper' );
-
         $helper = Mage::helper('fontera_amier');
         $this->_controller = 'adminhtml_scraper';
         $this->_blockGroup = 'fontera_amier';
@@ -64,18 +64,16 @@ class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_
             'class'   => 'add'
         ));
         Mage::log('_prepareLayout');
-        $this->setChild('grid', $this->getLayout()->createBlock('adminhtml/scraper_grid', 'scraper.grid'));
+        $this->setChild('grid', $this->getLayout()->createBlock('fontera_amier/adminhtml_scraper_grid', 'scraper.grid'));
         return parent::_prepareLayout();
     }
 
-    /**
-     * Deprecated since 1.3.2
-     *
-     * @return string
-     */
-    public function getAddNewButtonHtml()
+
+    protected function _toHtml()
     {
-        return $this->getChildHtml('add_new_button');
+
+        Mage::log('getGridHtml()');
+        return $this->getGridHtml();
     }
 
     /**
@@ -88,16 +86,4 @@ class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_
         return $this->getChildHtml('grid');
     }
 
-    /**
-     * Check whether it is single store mode
-     *
-     * @return bool
-     */
-    public function isSingleStoreMode()
-    {
-        if (!Mage::app()->isSingleStoreMode()) {
-               return false;
-        }
-        return true;
-    }
 }
