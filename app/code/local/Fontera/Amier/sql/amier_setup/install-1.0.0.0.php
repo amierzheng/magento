@@ -26,7 +26,7 @@ $installer->startSetup();
  * Create table 'admin/assert'
  */
 $table = $installer->getConnection()
-    ->newTable($installer->getTable('scraper'))
+    ->newTable($installer->getTable('fontera_amier/scraper'))
     ->addColumn('source_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'identity'  => true,
         'unsigned'  => true,
@@ -72,9 +72,10 @@ $table = $installer->getConnection()
     ->setComment('Scraper sources table');
 $installer->getConnection()->createTable($table);
 
+$s_data_tbl = $installer->getTable(array('fontera_amier/scraper', 'data'));
 
 $table = $installer->getConnection()
-    ->newTable($installer->getTable(array('scraper', 'data')))
+    ->newTable($s_data_tbl)
     ->addColumn('data_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'identity'  => true,
         'unsigned'  => true,
@@ -101,18 +102,20 @@ $table = $installer->getConnection()
         'nullable'  => true,
         'default'   => 1,
     ), 'The status of the Record. 0: disabled, 1: enabled')
-    ->addIndex($installer->getIdxName('scraper_data', array('source_id')),
+    ->addIndex($installer->getIdxName($s_data_tbl, array('source_id')),
         array('source_id'))
-    ->addIndex($installer->getIdxName('scraper_data', array('unique_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE),
+    ->addIndex($installer->getIdxName($s_data_tbl, array('unique_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE),
         array('unique_id'), array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE))
-    ->addIndex($installer->getIdxName('scraper_data', array('store_id')),
+    ->addIndex($installer->getIdxName($s_data_tbl, array('store_id')),
         array('store_id'))
     ->setComment('Scraper Data table');
 $installer->getConnection()->createTable($table);
 
 
+
+$s_d_details_tbl = $installer->getTable(array('fontera_amier/scraper', 'data_details'));
 $table = $installer->getConnection()
-    ->newTable($installer->getTable(array('scraper', 'data_details')))
+    ->newTable($s_d_details_tbl)
     ->addColumn('data_details_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'identity'  => true,
         'unsigned'  => true,
@@ -135,7 +138,7 @@ $table = $installer->getConnection()
         'nullable'  => true,
         'default'   => null,
     ), 'Additional Content')
-    ->addIndex($installer->getIdxName('scraper_data_details', array('data_id')),
+    ->addIndex($installer->getIdxName($s_d_details_tbl, array('data_id')),
         array('data_id'))
     ->setComment('The details of the scraped Data');
 $installer->getConnection()->createTable($table);

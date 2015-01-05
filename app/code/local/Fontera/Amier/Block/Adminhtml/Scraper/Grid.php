@@ -39,7 +39,7 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Grid extends Mage_Adminhtml_Block_Wi
     public function __construct()
     {
         parent::__construct();
-        $this->setId('scraperGrid');
+        $this->setId('fontera_amier_grid');
         $this->setDefaultSort('source_id');
         $this->setDefaultDir('DESC');
         $this->_helper = Mage::helper('fontera_amier');
@@ -54,10 +54,9 @@ class Fontera_Amier_Block_Adminhtml_Scraper_Grid extends Mage_Adminhtml_Block_Wi
 
     protected function _prepareCollection()
     {
-
         $collection = Mage::getModel('fontera_amier/scraper')->getCollection();
         $this->setCollection($collection);
-Mage::log('_prepareCollection');
+
         return parent::_prepareCollection();
     }
 

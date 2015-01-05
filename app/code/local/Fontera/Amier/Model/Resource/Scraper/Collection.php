@@ -1,7 +1,7 @@
 <?php
 
 
-class Fontera_Amier_Model_Resource_Scraper_Collection extends Mage_Eav_Model_Entity_Collection_Abstract
+class Fontera_Amier_Model_Resource_Scraper_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
 
     /**
@@ -10,7 +10,12 @@ class Fontera_Amier_Model_Resource_Scraper_Collection extends Mage_Eav_Model_Ent
      */
     protected function _construct()
     {
-        $this->_init('amier/scraper');
+
+        parent::_construct();
+        $this->_init(
+            'fontera_amier/scraper',
+            'fontera_amier/scraper'
+        );
 
     }
 

@@ -35,13 +35,13 @@
                 <class>Fontera_Amier_Model_Resource</class>
                 <entities>
                     <scraper>
-                        <table>scraper</table>
+                        <table>fontera_amier_scraper</table>
                     </scraper>
                     <scraper_data>
-                        <table>scraper_data</table>
+                        <table>fontera_amier_scraper_data</table>
                     </scraper_data>
                     <scraper_data_details>
-                        <table>scraper_data_details</table>
+                        <table>fontera_amier_scraper_data_details</table>
                     </scraper_data_details>
                 </entities>
             </amier_resource>

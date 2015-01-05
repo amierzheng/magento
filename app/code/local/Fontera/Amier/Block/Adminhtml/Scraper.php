@@ -31,7 +31,7 @@
  * @package    Mage_Adminhtml
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_Container
+class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
 
 // http://www.magentogarden.com/blog/how-does-magento-adminhtml-grid-work.html
@@ -64,7 +64,7 @@ class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_
             'class'   => 'add'
         ));
         Mage::log('_prepareLayout');
-        $this->setChild('grid', $this->getLayout()->createBlock('fontera_amier/adminhtml_scraper_grid', 'scraper.grid'));
+        //$this->setChild('grid', $this->getLayout()->createBlock('fontera_amier/adminhtml_scraper_grid', 'scraper.grid'));
         return parent::_prepareLayout();
     }
 
@@ -72,7 +72,7 @@ class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_
     protected function _toHtml()
     {
 
-        Mage::log('getGridHtml()');
+        Mage::log($this->getGridHtml());
         return $this->getGridHtml();
     }
 
@@ -83,7 +83,7 @@ class Fontera_Amier_Block_Adminhtml_Scraper extends Mage_Adminhtml_Block_Widget_
      */
     public function getGridHtml()
     {
-        return $this->getChildHtml('grid');
+        return $this->getChildHtml('scraper.grid');
     }
 
 }

@@ -17,7 +17,7 @@
  * @author     Shaughn Le Grange - Hatlen <support@fontera.com>
  */
  
-class Fontera_Amier_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setup
+class Fontera_Amier_Model_Resource_Setup extends Mage_Core_Model_Resource_Setup
 {
 
 }

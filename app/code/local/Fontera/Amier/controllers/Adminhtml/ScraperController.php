@@ -47,7 +47,7 @@ class Fontera_Amier_Adminhtml_ScraperController extends Mage_Adminhtml_Controlle
     protected function _initAction()
     {
         $this->loadLayout()
-            //->_setActiveMenu('fontera/amier/scraper')
+            ->_setActiveMenu('fontera/amier/scraper')
             ->_addBreadcrumb($this->_helper()->__('Magento Scraper Manager'), $this->_helper()->__('Magento Scraper Manager'));
         return $this;
     }
@@ -56,8 +56,7 @@ class Fontera_Amier_Adminhtml_ScraperController extends Mage_Adminhtml_Controlle
     {
         $this->_title($this->__('Fontera'))
             ->_title($this->__('Manage Scraper'));
-        //$this->_initAction()->renderLayout();
-        $this->loadLayout()->renderLayout();
+        $this->_initAction()->renderLayout();
     }
 
     /**
